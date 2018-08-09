@@ -1,0 +1,210 @@
+// ======================================================================================
+//  BASE A thin layer on top of normalize.css
+// ======================================================================================
+
+
+
+// ==========================================
+//  To get IE10 in snap mode to play nicely
+//  we have to use CSS Device Adaptation.
+//  https://timkadlec.com/2012/10/ie10-snap-mode-and-responsive-design/
+// ==========================================
+
+// sass-lint:disable no-vendor-prefixes
+@-ms-viewport {
+  width: device-width;
+}
+
+
+// ==========================================
+//  Toplevel HTML element
+//
+//  [1] Make sure 'font-size', 'line-height'
+//      & 'font-family' are set separately
+//      because of rounding errors with
+//      line-height
+//  [2] Ensure the page always fills at least
+//      the entire height of the viewport.
+//  [3] Prevent certain mobile browsers
+//      from automatically zooming fonts.
+//  [4] Fonts on OSX will look more consistent
+//      with other systems that do not render
+//      text using sub-pixel anti-aliasing.
+//  [5] Disable horizontal scroll
+//  [6] Disable auto-hiding scrollbar in IE.
+//      Is being activated by '@-ms-viewport {width: device-width}'
+//      (http://stackoverflow.com/questions/17045132/scrollbar-overlay-in-ie10-how-do-you-stop-that)
+//  [7] Links with no class get a default hover
+//  [8] Browser reset all margins.
+// ==========================================
+
+html {
+  @include font-size('base'); // [1] //
+  height: 100%; // [2] //
+  -webkit-text-size-adjust: 100%; // [3] //
+  -ms-text-size-adjust: 100%; // [3] //
+  -moz-osx-font-smoothing: grayscale; // [4] //
+  -webkit-font-smoothing: antialiased; // [4] //
+  -ms-overflow-style: scrollbar; // [6] //
+  box-sizing: border-box;
+}
+
+* {
+  &,
+  &:before,
+  &:after {
+    box-sizing: inherit;
+  }
+}
+
+body {
+  @include font('opensans');
+  @include font-size('base');
+  overflow-x: hidden;
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+  background: $page-background-color;
+  color: $page-text-color;
+}
+
+a {
+  color: $link-text-color;
+  text-decoration: underline;
+  transition: color $transition-speed $transition-ease;
+
+  &:not([class]):hover { // [7] //
+    color: $link-text-color--hover;
+  }
+
+  &:focus,
+  &:active {
+    outline: none;
+    outline-offset: unset;
+  }
+}
+
+hr {
+  border: 0;
+  @include border(top);
+}
+
+// [8] //
+blockquote,
+dl,
+dd,
+ol,
+ul,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+pre,
+fieldset,
+figure,
+hr {
+  margin: 0;
+}
+
+p,
+ul,
+ol {
+  margin-top: $space-half;
+}
+
+fieldset,
+ol,
+ul {
+  padding: 0;
+}
+
+iframe,
+fieldset {
+  border: 0;
+}
+
+
+// ==========================================
+//  Set the default selection
+// ==========================================
+
+::selection {
+  background: palette('neutral', 'dark');
+  color: palette('neutral', 'x-light');
+  text-shadow: none;
+}
+
+
+// ==========================================
+//  Needed for iOS to prevent input zooming
+//  https://uxcellence.com/2014/01/15/quick-fix-increase-font-size-to-16px-to-fix-input-zoom
+// ==========================================
+
+input,
+select,
+textarea {
+  font-size: $base-font-size;
+}
+
+code,
+kbd,
+pre,
+samp {
+  font-family: monospace, monospace;
+  font-size: $base-font-size;
+}
+
+ul {
+  list-style: none;
+
+  li::before {
+    @include font-size('x-large');
+    content: '•';
+    width: 1em;
+    display: inline-block;
+    margin-left: -.875em;
+    line-height: 0;
+    color: palette('secondary');
+    vertical-align: middle;
+  }
+}
+
+ol {
+  list-style: none;
+  counter-reset: li;
+
+  li {
+    counter-increment: li;
+
+    &::before {
+      content: counter(li);
+      display: inline-block;
+      min-width: $space + $space-quarter;
+      margin-left: -1.125em;
+      padding-right: $space-half;
+    }
+  }
+}
+
+blockquote {
+  @include font-size('large');
+  @include font('opensans', 'semi-bold');
+  font-style: italic;
+  color: palette('secondary');
+  border-left: 2px solid palette('primary', 'x-light');
+  margin: $space $space-double $space $space;
+  padding: 0 $space;
+
+  @include mq(m) {
+    margin-right: 25%;
+  }
+}
+
+.lead {
+  @include font-size('base');
+  @include font('opensans', 'semi-bold');
+  font-style: italic;
+}

@@ -1,0 +1,31 @@
+// ======================================================================================
+//  Grid elements
+// ======================================================================================
+
+
+
+.container {
+  width: 100%;
+
+  @include mq(xl) {
+    width: 1416px;
+  }
+}
+
+@include make-custom-grid-columns();
+
+@include mq(s) {
+  @include make-custom-grid(s)
+}
+
+@include mq(m) {
+  @include make-custom-grid(m)
+}
+
+@include mq(l) {
+  @include make-custom-grid(l)
+}
+
+@include mq(xl) {
+  @include make-custom-grid(xl)
+}

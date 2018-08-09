@@ -1,0 +1,44 @@
+// ======================================================================================
+//  Site wide variables for specific components on which other elements are dependent.
+// ======================================================================================
+
+
+
+// ==========================================
+//  Set some values here for reuse
+//  within components
+// ==========================================
+
+$site-gutter-width:                             30px;
+
+
+// ==========================================
+//  Set some default uses of color
+// ==========================================
+
+$page-shadow-color:                             palette('neutral', 'dark') !default;
+$page-background-color:                         palette('neutral', 'x-light') !default;
+$page-text-color:                               $color-negative;
+$link-text-color:                               palette('primary') !default;
+$link-text-color--hover:                        palette('primary', 'light') !default;
+
+
+// ==========================================
+//  Default border properties
+// ==========================================
+
+$border-radius:                                 5px !default;
+$border-radius--small:                          3px !default;
+$border-width:                                  1px !default;
+$border-style:                                  solid !default;
+$border-color:                                  palette('neutral') !default;
+
+
+// ==========================================
+//  Default animation properties
+// ==========================================
+
+$transition-speed:                              .4s;
+$transition-speed--fast:                        .2s;
+$transition-speed--turbo:                       .1s;
+$transition-ease:                               ease-in-out;

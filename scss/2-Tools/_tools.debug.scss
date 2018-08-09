@@ -1,0 +1,194 @@
+// ======================================================================================
+//  Debug Mode
+//  Activate switch $debug-mode in _settings.config.scss
+// ======================================================================================
+
+
+
+// ==========================================
+//  Red border    ==  something is wrong
+//  Yellow border ==  something may be wrong,
+//                    you should double check.
+//  Green border  ==  perfect, nice one!
+// ==========================================
+
+@if $debug-mode {
+
+
+  //  Are there any empty elements in your page?
+  :empty {
+    outline: 5px solid palette('yellow');
+  }
+
+
+  //  Images require `alt` attributes, empty `alt`s are fine but should be
+  //  double-checked, no `alt` is bad and is flagged red.
+  img {
+    outline: 5px solid palette('red');
+  }
+
+  img[alt] {
+    outline: none;
+  }
+
+  img[alt=''] {
+    outline: 5px solid palette('yellow');
+  }
+
+
+  //  Links sometimes, though not always, benefit from `title` attributes. Links
+  //  without are never invalid but it’s a good idea to check.
+  a {
+    outline: 5px solid palette('yellow');
+  }
+
+  a[title] {
+    outline: none;
+  }
+
+
+  //  Double-check any links whose `href` is something questionable.
+  a[href='#'],
+  a[href*='javascript'] {
+    outline: 5px solid palette('yellow');
+  }
+
+
+  //  The `target` attribute ain’t too nice...
+  a[target] {
+    outline: 5px solid palette('yellow');
+  }
+
+
+  //  Ensure any lists only contain `li`s as children.
+  ul,
+  ol {
+    > *:not(li) {
+      outline: 5px solid palette('red');
+    }
+  }
+
+
+  //  It’s always nice to give `th`s `scope` attributes.
+  th {
+    outline: 5px solid palette('yellow');
+  }
+
+  th[scope] {
+    outline: none;
+  }
+
+
+  //  `tr`s as children of `table`s ain’t great,
+  //  did you need a `thead`/`tbody`?
+  table > tr {
+    outline: 5px solid palette('yellow');
+  }
+
+
+  //  `tfoot` needs to come *before* `tbody`.
+  tbody + tfoot {
+    outline: 5px solid palette('yellow');
+  }
+
+
+  //  Forms require `action` attributes
+  form {
+    outline: 5px solid palette('red');
+  }
+
+  form[action] {
+    outline: none;
+  }
+
+
+  //  Various form-field types have required attributes. `input`s need `type`
+  //  attributes, `textarea`s need `rows` and `cols` attributes and submit buttons
+  //  need a `value` attribute.
+  textarea,
+  input {
+    outline: 5px solid palette('red');
+  }
+
+  input[type] {
+    outline: none;
+  }
+
+  textarea[rows][cols] {
+    outline: none;
+  }
+
+  input[type=submit] {
+    outline: 5px solid palette('red');
+  }
+
+  input[type=submit][value] {
+    outline: none;
+  }
+
+
+  //  Avoid inline styles where possible.
+  [style] {
+    outline: 5px solid palette('yellow');
+  }
+
+
+  //  You should avoid using IDs for CSS, is this doing any styling?
+  [id] {
+    outline: 5px solid palette('yellow');
+  }
+}
+
+
+
+// ==========================================
+//  Media query helper
+//  Displays the current active media query in the bottom right corner
+// ==========================================
+
+@if $debug-mode == true or $show-mq == true {
+
+  //  Append media query label on body::after
+  body::after {
+    @include zindex(z-showmqlabel);
+    font-size: 12px;
+    content: 'screen size not supported';
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    padding: 6px 8px;
+    color: palette('white');
+    background: palette('black');
+    border-radius: 5px 5px 0 0;
+    font-family: monospace;
+    line-height: 1;
+    opacity: .75;
+    text-align: center;
+  }
+
+
+  //  Displays current media query per breakpoint
+  //  Set a unique bg-color on the body per viewport
+  //  for quickly identifying the matching viewport. (toggle in settings.config)
+  $hsl-step-value: 360 / length($breakpoints);
+
+  @for $i from 1 through length($breakpoints) {
+    $breakpoint: nth($breakpoints, $i);
+    $name: nth($breakpoint, 1);
+    $declaration: nth($breakpoint, 2);
+    $hue-value: ($hsl-step-value * $i) - ($hsl-step-value / 2);
+
+    @media only screen and (min-width: #{$declaration}) {
+      @if $show-mq--colors == true {
+        body {
+          // sass-lint:disable-block no-important, no-color-literals
+          background: hsla($hue-value, 100%, 50%, .15) !important;
+        }
+      }
+
+      body::after {
+        content: '#{$name}: #{$declaration}';
+      }
+    }
+  }
+}
