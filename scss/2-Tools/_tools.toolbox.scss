@@ -256,24 +256,95 @@
 
 
 // Create grid for specific class
-@mixin make-custom-grid($class) {
+@mixin make-grid($class) {
   @include float-grid-columns($class);
-  @include loop-grid-columns($grid-columns, $class, width);
+  @include loop-grid-columns($site-columns, $class, width);
 }
 
 
 // Framework grid generation
-@mixin make-custom-grid-columns($i: 1, $list: '.col-xs-#{$i}, .col-s-#{$i}, .col-m-#{$i}, .col-l-#{$i}, .col-xl-#{$i}') {
+@mixin make-grid-columns($i: 1, $list: '.col-xs-#{$i}, .col-s-#{$i}, .col-m-#{$i}, .col-l-#{$i}, .col-xl-#{$i}') {
   // sass-lint:disable-block empty-line-between-blocks
-  @for $i from (1 + 1) through $grid-columns {
+  @for $i from (1 + 1) through $site-columns {
     $list: '#{$list}, .col-xs-#{$i}, .col-s-#{$i}, .col-m-#{$i}, .col-l-#{$i}, .col-xl-#{$i}';
   }
   #{$list} {
     position: relative;
     min-height: 1px;
-    padding-left:  ceil(($grid-gutter-width / 2));
-    padding-right: floor(($grid-gutter-width / 2));
+    padding-left:  ceil(($site-gutter-width / 2));
+    padding-right: floor(($site-gutter-width / 2));
   }
+}
+
+
+// [converter] This is defined recursively in LESS, but Sass supports real loops
+@mixin float-grid-columns($class, $i: 1, $list: ".col-#{$class}-#{$i}") {
+  @for $i from (1 + 1) through $site-columns {
+    $list: "#{$list}, .col-#{$class}-#{$i}";
+  }
+  #{$list} {
+    float: left;
+  }
+}
+
+
+// [converter] This is defined recursively in LESS, but Sass supports real loops
+@mixin loop-grid-columns($columns, $class, $type) {
+  @for $i from 0 through $columns {
+    @include calc-grid-column($i, $class, $type);
+  }
+}
+
+
+@mixin calc-grid-column($index, $class, $type) {
+  @if ($type == width) and ($index > 0) {
+    .col-#{$class}-#{$index} {
+      width: percentage(($index / $site-columns));
+    }
+  }
+  @if ($type == push) and ($index > 0) {
+    .col-#{$class}-push-#{$index} {
+      left: percentage(($index / $site-columns));
+    }
+  }
+  @if ($type == push) and ($index == 0) {
+    .col-#{$class}-push-0 {
+      left: auto;
+    }
+  }
+  @if ($type == pull) and ($index > 0) {
+    .col-#{$class}-pull-#{$index} {
+      right: percentage(($index / $site-columns));
+    }
+  }
+  @if ($type == pull) and ($index == 0) {
+    .col-#{$class}-pull-0 {
+      right: auto;
+    }
+  }
+  @if ($type == offset) {
+    .col-#{$class}-offset-#{$index} {
+      margin-left: percentage(($index / $site-columns));
+    }
+  }
+}
+
+
+// Centered container element
+@mixin container-fixed($gutter: $site-gutter-width) {
+  margin-right: auto;
+  margin-left: auto;
+  padding-left:  floor(($gutter / 2));
+  padding-right: ceil(($gutter / 2));
+  @include clearfix;
+}
+
+
+// Creates a wrapper for a series of columns
+@mixin make-row($gutter: $site-gutter-width) {
+  margin-left:  ceil(($gutter / -2));
+  margin-right: floor(($gutter / -2));
+  @include clearfix;
 }
 
 

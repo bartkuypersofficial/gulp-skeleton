@@ -8,8 +8,60 @@
 //  Set some values here for reuse
 //  within components
 // ==========================================
+$site-columns:                                  12 !default;
+$site-gutter-width:                             30px !default;
 
-$site-gutter-width:                             30px;
+
+// ==========================================
+//  Screen sizes
+// ==========================================
+
+$screen-xs:                                     320px !default;
+$screen-xs-min:                                 $screen-xs !default;
+$screen-phone:                                  $screen-xs-min !default;
+
+$screen-s:                                      480px !default;
+$screen-s-min:                                  $screen-s !default;
+$screen-tablet:                                 $screen-s-min !default;
+
+$screen-m:                                      768px !default;
+$screen-m-min:                                  $screen-m !default;
+$screen-desktop:                                $screen-m-min !default;
+
+$screen-l:                                      1024px !default;
+$screen-l-min:                                  $screen-l !default;
+$screen-l-desktop:                              $screen-l-min !default;
+
+$screen-xl:                                     1024px !default;
+$screen-xl-min:                                 $screen-xl !default;
+$screen-xl-desktop:                             $screen-xl-min !default;
+
+$screen-xs-max:                                 ($screen-s-min - 1) !default;
+$screen-s-max:                                  ($screen-m-min - 1) !default;
+$screen-m-max:                                  ($screen-l-min - 1) !default;
+$screen-l-max:                                  ($screen-xl-min - 1) !default;
+
+
+// ==========================================
+//  Container sizes
+//  Define the maximum width of `.container`
+//  for different screen sizes.
+// ==========================================
+
+$container-mobile:                              (320px - $site-gutter-width) !default;
+$container-xs:                                  $container-mobile !default;
+
+$container-tablet-portrait:                     (480px - $site-gutter-width) !default;
+$container-s:                                   $container-tablet-portrait !default;
+
+$container-tablet-landscape:                    (768px - $site-gutter-width) !default;
+$container-m:                                   $container-tablet-landscape !default;
+
+$container-desktop:                             (1024px - $site-gutter-width) !default;
+$container-l:                                   $container-desktop !default;
+
+$container-large-desktop:                       (1140px - $site-gutter-width) !default;
+$container-xl:                                  $container-large-desktop !default;
 
 
 // ==========================================
@@ -18,7 +70,7 @@ $site-gutter-width:                             30px;
 
 $page-shadow-color:                             palette('neutral', 'dark') !default;
 $page-background-color:                         palette('neutral', 'x-light') !default;
-$page-text-color:                               $color-negative;
+$page-text-color:                               $color-negative !default;
 $link-text-color:                               palette('primary') !default;
 $link-text-color--hover:                        palette('primary', 'light') !default;
 
@@ -38,7 +90,7 @@ $border-color:                                  palette('neutral') !default;
 //  Default animation properties
 // ==========================================
 
-$transition-speed:                              .4s;
-$transition-speed--fast:                        .2s;
-$transition-speed--turbo:                       .1s;
-$transition-ease:                               ease-in-out;
+$transition-speed:                              .4s !default;
+$transition-speed--fast:                        .2s !default;
+$transition-speed--turbo:                       .1s !default;
+$transition-ease:                               ease-in-out !default;
