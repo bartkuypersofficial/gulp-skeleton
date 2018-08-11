@@ -17,6 +17,7 @@
   line-height: normal;
   text-decoration: none;
   transition: $transition-speed $transition-ease;
+  left: 0; right: 0;
 
   &:hover {
     @include elevation(2);
