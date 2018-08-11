@@ -136,6 +136,12 @@ fieldset {
   border: 0;
 }
 
+::-moz-selection {
+  background: #392533;
+  color: #efefef;
+  text-shadow: none;
+}
+
 ::selection {
   background: #392533;
   color: #efefef;
