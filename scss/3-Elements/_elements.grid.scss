@@ -11,20 +11,8 @@
 // ==========================================
 
 .container {
-  @include container-fixed;
-
-  @media (min-width: $screen-s-min) {
-    width: $container-s;
-  }
-  @media (min-width: $screen-m-min) {
-    width: $container-m;
-  }
-  @media (min-width: $screen-l-min) {
-    width: $container-l;
-  }
-  @media (min-width: $screen-xl-min) {
-    width: $container-xl;
-  }
+  @include make-container();
+  @include make-container-max-widths();
 }
 
 
@@ -37,7 +25,7 @@
 // ==========================================
 
 .container-fluid {
-  @include container-fixed;
+  @include make-container();
 }
 
 
@@ -48,7 +36,20 @@
 // ==========================================
 
 .row {
-  @include make-row;
+  @include make-row();
+}
+
+// Remove the negative margin from default .row, then the horizontal padding
+// from all immediate children columns (to prevent runaway style inheritance).
+.no-gutters {
+  margin-right: 0;
+  margin-left: 0;
+
+  > .col,
+  > [class*='col-'] {
+    padding-right: 0;
+    padding-left: 0;
+  }
 }
 
 
@@ -59,57 +60,3 @@
 // ==========================================
 
 @include make-grid-columns();
-
-
-// ==========================================
-//  Extra small grid
-//  Columns, offsets, pushes, and pulls for
-//  extra small devices like smartphones.
-// ==========================================
-
-@include make-grid(xs);
-
-
-// ==========================================
-//  Small grid
-//  Columns, offsets, pushes, and pulls for
-//  the small device range, from phones to
-//  tablets.
-// ==========================================
-
-@include mq(s) {
-  @include make-grid(s)
-}
-
-
-// ==========================================
-//  Medium grid
-//  Columns, offsets, pushes, and pulls for
-//  the desktop device range.
-// ==========================================
-
-@include mq(m) {
-  @include make-grid(m)
-}
-
-
-// ==========================================
-//  Large grid
-//  Columns, offsets, pushes, and pulls for
-//  the large desktop device range.
-// ==========================================
-
-@include mq(l) {
-  @include make-grid(l)
-}
-
-
-// ==========================================
-//  Extra Large grid
-//  Columns, offsets, pushes, and pulls for
-//  the extra large desktop device range.
-// ==========================================
-
-@include mq(xl) {
-  @include make-grid(xl)
-}
