@@ -70,10 +70,10 @@
   //  It’s always nice to give `th`s `scope` attributes.
   th {
     outline: 5px solid palette('yellow');
-  }
 
-  th[scope] {
-    outline: none;
+    &[scope] {
+      outline: none;
+    }
   }
 
 
@@ -93,35 +93,40 @@
   //  Forms require `action` attributes
   form {
     outline: 5px solid palette('red');
-  }
 
-  form[action] {
-    outline: none;
+    &[action] {
+      outline: none;
+    }
   }
 
 
   //  Various form-field types have required attributes. `input`s need `type`
   //  attributes, `textarea`s need `rows` and `cols` attributes and submit buttons
   //  need a `value` attribute.
-  textarea,
+  textarea {
+    outline: 5px solid palette('red');
+
+    &[rows],
+    &[cols] {
+      outline: none;
+    }
+  }
+
   input {
     outline: 5px solid palette('red');
-  }
 
-  input[type] {
-    outline: none;
-  }
+    &[type] {
+      outline: none;
+    }
 
-  textarea[rows][cols] {
-    outline: none;
-  }
+    &[type=submit] {
+      outline: 5px solid palette('red');
+    }
 
-  input[type=submit] {
-    outline: 5px solid palette('red');
-  }
-
-  input[type=submit][value] {
-    outline: none;
+    &[type=submit],
+    &[value] {
+      outline: none;
+    }
   }
 
 
@@ -149,19 +154,19 @@
   //  Append media query label on body::after
   body::after {
     @include zindex(z-showmqlabel);
-    font-size: 12px;
-    content: 'screen size not supported';
     position: fixed;
-    bottom: 0;
     right: 0;
+    bottom: 0;
     padding: 6px 8px;
-    color: palette('white');
-    background: palette('black');
     border-radius: 5px 5px 0 0;
+    background: palette('black');
+    color: palette('white');
     font-family: monospace;
+    font-size: 12px;
     line-height: 1;
-    opacity: .75;
     text-align: center;
+    content: 'screen size not supported';
+    opacity: .75;
   }
 
 

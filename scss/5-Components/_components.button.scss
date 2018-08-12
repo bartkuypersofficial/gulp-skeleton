@@ -10,30 +10,27 @@
 
 .btn {
   padding: $space-quarter $space;
-  color: palette('white');
-  background-color: palette('primary');
-  border: 0;
+  transition: $transition-speed $transition-ease;
+  border: none;
   border-radius: $space;
+  background-color: palette('primary');
+  color: palette('white');
   line-height: normal;
   text-decoration: none;
-  transition: $transition-speed $transition-ease;
-  left: 0; right: 0;
-  display: flex;
-  justify-content: center;
 
   &:hover {
     @include elevation(2);
-    color: palette('white');
     background-color: palette('secondary');
+    color: palette('white');
   }
 
   &:focus,
   &:active,
   &:active:focus {
     @include elevation(4);
-    color: palette('white');
-    background-color: palette('tertiary');
     outline: none;
     outline-offset: unset;
+    background-color: palette('tertiary');
+    color: palette('white');
   }
 }

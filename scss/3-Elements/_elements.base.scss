@@ -60,18 +60,18 @@ html {
 body {
   @include font('opensans');
   @include font-size('base');
-  overflow-x: hidden;
   min-height: 100%;
   margin: 0;
   padding: 0;
   background: $page-background-color;
   color: $page-text-color;
+  overflow-x: hidden;
 }
 
 a {
+  transition: color $transition-speed $transition-ease;
   color: $link-text-color;
   text-decoration: underline;
-  transition: color $transition-speed $transition-ease;
 
   &:not([class]):hover { // [7] //
     color: $link-text-color--hover;
@@ -85,7 +85,7 @@ a {
 }
 
 hr {
-  border: 0;
+  border: none;
   @include border(top);
 }
 
@@ -123,7 +123,7 @@ ul {
 
 iframe,
 fieldset {
-  border: 0;
+  border: none;
 }
 
 
@@ -162,12 +162,12 @@ ul {
 
   li::before {
     @include font-size('x-large');
-    content: '•';
-    width: 1em;
     display: inline-block;
+    width: 1em;
     margin-left: -.875em;
-    line-height: 0;
     color: palette('secondary');
+    line-height: 0;
+    content: '•';
     vertical-align: middle;
   }
 }
@@ -180,11 +180,11 @@ ol {
     counter-increment: li;
 
     &::before {
-      content: counter(li);
       display: inline-block;
       min-width: $space + $space-quarter;
       margin-left: -1.125em;
       padding-right: $space-half;
+      content: counter(li);
     }
   }
 }
@@ -192,11 +192,11 @@ ol {
 blockquote {
   @include font-size('large');
   @include font('opensans', 'semi-bold');
-  font-style: italic;
-  color: palette('secondary');
-  border-left: 2px solid palette('primary', 'x-light');
   margin: $space $space-double $space $space;
   padding: 0 $space;
+  border-left: 2px solid palette('primary', 'x-light');
+  color: palette('secondary');
+  font-style: italic;
 
   @include mq(m) {
     margin-right: 25%;

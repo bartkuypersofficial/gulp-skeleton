@@ -1,19 +1,19 @@
 @charset "UTF-8";
 body::after {
   z-index: 70;
-  font-size: 12px;
-  content: 'screen size not supported';
   position: fixed;
-  bottom: 0;
   right: 0;
+  bottom: 0;
   padding: 6px 8px;
-  color: white;
-  background: black;
   border-radius: 5px 5px 0 0;
+  background: black;
+  color: white;
   font-family: monospace;
+  font-size: 12px;
   line-height: 1;
-  opacity: .75;
   text-align: center;
+  content: 'screen size not supported';
+  opacity: .75;
 }
 
 @media only screen and (min-width: 320px) {
@@ -72,18 +72,18 @@ body {
   font-style: normal;
   font-size: 15px;
   font-size: 0.9375rem;
-  overflow-x: hidden;
   min-height: 100%;
   margin: 0;
   padding: 0;
   background: #efefef;
   color: #000000;
+  overflow-x: hidden;
 }
 
 a {
+  transition: color 0.4s ease-in-out;
   color: #000099;
   text-decoration: underline;
-  transition: color 0.4s ease-in-out;
 }
 
 a:not([class]):hover {
@@ -96,7 +96,7 @@ a:focus, a:active {
 }
 
 hr {
-  border: 0;
+  border: none;
   border-top: 1px solid #5e6a71;
 }
 
@@ -133,7 +133,7 @@ ul {
 
 iframe,
 fieldset {
-  border: 0;
+  border: none;
 }
 
 ::-moz-selection {
@@ -169,12 +169,12 @@ ul {
 ul li::before {
   font-size: 20px;
   font-size: 1.25rem;
-  content: '•';
-  width: 1em;
   display: inline-block;
+  width: 1em;
   margin-left: -.875em;
-  line-height: 0;
   color: #ff6e00;
+  line-height: 0;
+  content: '•';
   vertical-align: middle;
 }
 
@@ -188,11 +188,11 @@ ol li {
 }
 
 ol li::before {
-  content: counter(li);
   display: inline-block;
   min-width: 30px;
   margin-left: -1.125em;
   padding-right: 12px;
+  content: counter(li);
 }
 
 blockquote {
@@ -201,11 +201,11 @@ blockquote {
   font-family: "Open Sans", sans-serif;
   font-weight: 600;
   font-style: normal;
-  font-style: italic;
-  color: #ff6e00;
-  border-left: 2px solid #739abc;
   margin: 24px 48px 24px 24px;
   padding: 0 24px;
+  border-left: 2px solid #739abc;
+  color: #ff6e00;
+  font-style: italic;
 }
 
 @media all and (min-width: 768px) {
@@ -319,14 +319,14 @@ table {
 }
 
 table tr:last-child > * {
-  border-bottom: 0;
+  border-bottom: none;
 }
 
 table td,
 table th {
   border-bottom: 1px solid #5e6a71;
-  text-align: left;
   padding: 12px;
+  text-align: left;
 }
 
 table th {
@@ -340,14 +340,14 @@ table td:first-child {
 .container {
   margin-right: auto;
   margin-left: auto;
-  padding-left: 15px;
   padding-right: 15px;
+  padding-left: 15px;
 }
 
 .container::after {
-  content: '';
   display: block;
   clear: both;
+  content: '';
 }
 
 @media (min-width: 480px) {
@@ -377,32 +377,32 @@ table td:first-child {
 .container-fluid {
   margin-right: auto;
   margin-left: auto;
-  padding-left: 15px;
   padding-right: 15px;
+  padding-left: 15px;
 }
 
 .container-fluid::after {
-  content: '';
   display: block;
   clear: both;
+  content: '';
 }
 
 .row {
-  margin-left: -15px;
   margin-right: -15px;
+  margin-left: -15px;
 }
 
 .row::after {
-  content: '';
   display: block;
   clear: both;
+  content: '';
 }
 
 .col-xs-1, .col-s-1, .col-m-1, .col-l-1, .col-xl-1, .col-xs-2, .col-s-2, .col-m-2, .col-l-2, .col-xl-2, .col-xs-3, .col-s-3, .col-m-3, .col-l-3, .col-xl-3, .col-xs-4, .col-s-4, .col-m-4, .col-l-4, .col-xl-4, .col-xs-5, .col-s-5, .col-m-5, .col-l-5, .col-xl-5, .col-xs-6, .col-s-6, .col-m-6, .col-l-6, .col-xl-6, .col-xs-7, .col-s-7, .col-m-7, .col-l-7, .col-xl-7, .col-xs-8, .col-s-8, .col-m-8, .col-l-8, .col-xl-8, .col-xs-9, .col-s-9, .col-m-9, .col-l-9, .col-xl-9, .col-xs-10, .col-s-10, .col-m-10, .col-l-10, .col-xl-10, .col-xs-11, .col-s-11, .col-m-11, .col-l-11, .col-xl-11, .col-xs-12, .col-s-12, .col-m-12, .col-l-12, .col-xl-12 {
   position: relative;
   min-height: 1px;
-  padding-left: 15px;
   padding-right: 15px;
+  padding-left: 15px;
 }
 
 .col-xs-1, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12 {
@@ -627,31 +627,25 @@ table td:first-child {
 
 .btn {
   padding: 6px 24px;
-  color: white;
-  background-color: #000099;
-  border: 0;
+  transition: 0.4s ease-in-out;
+  border: none;
   border-radius: 24px;
+  background-color: #000099;
+  color: white;
   line-height: normal;
   text-decoration: none;
-  transition: 0.4s ease-in-out;
-  left: 0;
-  right: 0;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-pack: center;
-      justify-content: center;
 }
 
 .btn:hover {
   box-shadow: 0px 3px 1px -2px rgba(57, 37, 51, 0.2), 0px 2px 2px 0px rgba(57, 37, 51, 0.14), 0px 1px 5px 0px rgba(57, 37, 51, 0.12);
-  color: white;
   background-color: #ff6e00;
+  color: white;
 }
 
 .btn:focus, .btn:active, .btn:active:focus {
   box-shadow: 0px 2px 4px -1px rgba(57, 37, 51, 0.2), 0px 4px 5px 0px rgba(57, 37, 51, 0.14), 0px 1px 10px 0px rgba(57, 37, 51, 0.12);
-  color: white;
-  background-color: #72ce9b;
   outline: none;
   outline-offset: unset;
+  background-color: #72ce9b;
+  color: white;
 }

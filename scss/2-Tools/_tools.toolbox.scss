@@ -271,17 +271,18 @@
   #{$list} {
     position: relative;
     min-height: 1px;
-    padding-left:  ceil(($site-gutter-width / 2));
     padding-right: floor(($site-gutter-width / 2));
+    padding-left:  ceil(($site-gutter-width / 2));
   }
 }
 
 
 // [converter] This is defined recursively in LESS, but Sass supports real loops
-@mixin float-grid-columns($class, $i: 1, $list: ".col-#{$class}-#{$i}") {
+@mixin float-grid-columns($class, $i: 1, $list: '.col-#{$class}-#{$i}') {
   @for $i from (1 + 1) through $site-columns {
-    $list: "#{$list}, .col-#{$class}-#{$i}";
+    $list: '#{$list}, .col-#{$class}-#{$i}';
   }
+
   #{$list} {
     float: left;
   }
@@ -334,16 +335,16 @@
 @mixin container-fixed($gutter: $site-gutter-width) {
   margin-right: auto;
   margin-left: auto;
-  padding-left:  floor(($gutter / 2));
   padding-right: ceil(($gutter / 2));
+  padding-left:  floor(($gutter / 2));
   @include clearfix;
 }
 
 
 // Creates a wrapper for a series of columns
 @mixin make-row($gutter: $site-gutter-width) {
-  margin-left:  ceil(($gutter / -2));
   margin-right: floor(($gutter / -2));
+  margin-left:  ceil(($gutter / -2));
   @include clearfix;
 }
 
@@ -447,9 +448,9 @@
 @mixin font-face($font-family, $file-path, $font-weight: normal, $font-style: normal, $file-formats: eot woff2 woff ttf svg) {
   @font-face {
     font-family: $font-family;
-    src: font-source-declaration($font-family, $file-path, $file-formats);
     font-style: $font-style;
     font-weight: $font-weight;
+    src: font-source-declaration($font-family, $file-path, $file-formats);
   }
 }
 
@@ -463,17 +464,17 @@
 
   &::before {
     display: block;
-    content: '';
     width: 100%;
     padding-top: ($height / $width) * 100%;
+    content: '';
   }
 
   > #{$content-selector} {
     position: absolute;
     top: 0;
-    left: 0;
     right: 0;
     bottom: 0;
+    left: 0;
   }
 }
 
@@ -495,9 +496,9 @@
 //  As per: nicolasgallagher.com/micro-clearfix-hack
 @mixin clearfix() {
   &::after {
-    content: '';
     display: block;
     clear: both;
+    content: '';
   }
 }
 
@@ -541,9 +542,9 @@
 //  @include arrow(top, 10px, #fff);
 @mixin arrow ($arrow-direction: 'right', $arrow-size: 6px, $color: palette(primary)) {
   @if ($arrow-direction == 'top') {
-    border-left: $arrow-size solid transparent;
     border-right: $arrow-size solid transparent;
     border-bottom: $arrow-size solid $color;
+    border-left: $arrow-size solid transparent;
   }
   @if ($arrow-direction == 'right') {
     border-top: $arrow-size solid transparent;
@@ -551,14 +552,14 @@
     border-left: $arrow-size solid $color;
   }
   @if ($arrow-direction == 'bottom') {
-    border-left: $arrow-size solid transparent;
-    border-right: $arrow-size solid transparent;
     border-top: $arrow-size solid $color;
+    border-right: $arrow-size solid transparent;
+    border-left: $arrow-size solid transparent;
   }
   @if ($arrow-direction == 'left') {
     border-top: $arrow-size solid transparent;
-    border-bottom: $arrow-size solid transparent;
     border-right: $arrow-size solid $color;
+    border-bottom: $arrow-size solid transparent;
   }
 }
 
@@ -583,9 +584,9 @@
 //  sample value truncate(100%)
 @mixin truncate($truncation-boundary) {
   max-width: $truncation-boundary;
+  text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis;
 }
 
 
@@ -600,9 +601,9 @@
 
 //  Quickly add a ellipsis
 @mixin ellipsis() {
-  overflow: hidden;
-  white-space: nowrap;
   text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 
@@ -629,12 +630,12 @@
 //  Restrict an element to a max-width for creating gutters on the side
 @mixin constrain() {
   // sass-lint:disable-block no-important
-  padding-left: $site-gutter-width !important;
-  padding-right: $site-gutter-width !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
-  max-width: calc(#{map-get($breakpoints, xl)} + #{double($site-gutter-width)}) !important;
   width: 100%;
+  max-width: calc(#{map-get($breakpoints, xl)} + #{double($site-gutter-width)}) !important;
+  margin-right: auto !important;
+  margin-left: auto !important;
+  padding-right: $site-gutter-width !important;
+  padding-left: $site-gutter-width !important;
 }
 
 
@@ -642,15 +643,15 @@
 //  an constrained element.
 @mixin reset-constrain() {
   // sass-lint:disable-block no-important
-  margin-left: calc(-50vw + 50%) !important;
   margin-right: calc(-50vw + 50%) !important;
+  margin-left: calc(-50vw + 50%) !important; 
 }
 
 @mixin reset-constrain-pad() {
   @include reset-constrain;
   // sass-lint:disable-block no-important
-  padding-left: calc(50vw - 50%) !important;
   padding-right: calc(50vw - 50%) !important;
+  padding-left: calc(50vw - 50%) !important;
 }
 
 

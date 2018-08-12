@@ -12,15 +12,15 @@ table {
 
   tr:last-child {
     & > * {
-      border-bottom: 0;
+      border-bottom: none;
     }
   }
 
   td,
   th {
     @include border(bottom);
-    text-align: left;
     padding: $space-half;
+    text-align: left;
   }
 
   th {
