@@ -10,7 +10,7 @@
 //  only for functions and mixins.
 // ==========================================
 
-$_color-base-primary:                           #009 !default;
+$_color-base-primary:                           #000099 !default;
 $_color-base-secondary:                         #ff6e00 !default;
 $_color-base-tertiary:                          #72ce9b !default;
 
@@ -25,8 +25,8 @@ $_color-base-alert:                             #dd1717 !default;
 //  and darkest colors.
 // ==========================================
 
-$color-positive:                                #fff !default;
-$color-negative:                                #000 !default;
+$color-positive:                                #ffffff !default;
+$color-negative:                                #000000 !default;
 
 
 // ==========================================
@@ -144,4 +144,3 @@ $opacity: (
 
   @return $color;
 }
-

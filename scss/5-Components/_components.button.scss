@@ -18,6 +18,8 @@
   text-decoration: none;
   transition: $transition-speed $transition-ease;
   left: 0; right: 0;
+  display: flex;
+  justify-content: center;
 
   &:hover {
     @include elevation(2);

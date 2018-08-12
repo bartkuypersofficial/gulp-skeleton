@@ -25,14 +25,14 @@
   //  double-checked, no `alt` is bad and is flagged red.
   img {
     outline: 5px solid palette('red');
-  }
 
-  img[alt] {
-    outline: none;
-  }
+    &[alt] {
+      outline: none;
+    }
 
-  img[alt=''] {
-    outline: 5px solid palette('yellow');
+    &[alt=''] {
+      outline: 5px solid palette('yellow');
+    }
   }
 
 
@@ -40,23 +40,21 @@
   //  without are never invalid but it’s a good idea to check.
   a {
     outline: 5px solid palette('yellow');
-  }
 
-  a[title] {
-    outline: none;
-  }
+    &[title] {
+      outline: none;
+    }
 
+    //  Double-check any links whose `href` is something questionable.
+    &[href='#'],
+    &[href*='javascript'] {
+      outline: 5px solid palette('yellow');
+    }
 
-  //  Double-check any links whose `href` is something questionable.
-  a[href='#'],
-  a[href*='javascript'] {
-    outline: 5px solid palette('yellow');
-  }
-
-
-  //  The `target` attribute ain’t too nice...
-  a[target] {
-    outline: 5px solid palette('yellow');
+    //  The `target` attribute ain’t too nice...
+    &[target] {
+      outline: 5px solid palette('yellow');
+    }
   }
 
 
