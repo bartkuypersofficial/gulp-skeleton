@@ -35,9 +35,7 @@ gulp.task('minify-scripts', function() {
   return gulp.src('scripts/**')
     .pipe(concat('scripts.js'))
     .pipe(minify({
-      ext:{
-        min:'.min.js'
-      }
+      ext:{min:'.min.js'}
     }))
     .pipe(gulp.dest('../js'));
 });

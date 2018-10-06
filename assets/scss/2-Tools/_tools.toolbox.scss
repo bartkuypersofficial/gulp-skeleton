@@ -248,6 +248,16 @@
 }
 
 
+
+
+
+// =============================================
+// Mixins
+// =============================================
+
+
+
+
 //  Ascending
 //  Used to evaluate Sass maps like our grid breakpoints.
 //  sass-lint:disable no-empty-rulesets, quotes
@@ -268,21 +278,6 @@
 }
 
 @include _assert-ascending($container-max-widths, "$container-max-widths");
-
-
-
-// =============================================
-// Mixins
-// =============================================
-
-
-
-// Create grid for specific class
-
-
-
-
-
 
 
 //  Mixin for setting font-size in PX and REM
@@ -416,22 +411,22 @@
 
 
 //  Edit font rendering
-@mixin fontSmooth {
+@mixin font-smooth {
   -webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 
 //  Line-height crop top space on
 //  text elements - caused by line height
-@mixin lhCrop($line-height, $capital-letter: 1) {
-    &::before {
-        content: '';
-        display: block;
-        height: 0;
-        width: 0;
-        margin-top: calc((#{$capital-letter} - #{$line-height}) * 0.5em);
-    }
+@mixin lh-crop($line-height, $capital-letter: 1) {
+  &::before {
+    display: block;
+    width: 0;
+    height: 0;
+    margin-top: calc((#{$capital-letter} - #{$line-height}) * 0.5em);
+    content: '';
+  }
 }
 
 
@@ -521,16 +516,16 @@
 
 
 //  CSS triangle
-@mixin triangle ($direction: up, $width: 12px, $color: red) {
-	width: 0;
+@mixin triangle ($direction: up, $width: 12px, $color: #ff0000) {
+  width: 0;
   height: 0;
   border: $width solid transparent;
 
-  @if( $direction == left ) {
-		border-right-color: $color;
-  } @else if( $direction == right ) {
-		border-left-color: $color;
-	} @else if( $direction == down ) {
+  @if ( $direction == left ) {
+    border-right-color: $color;
+  } @else if ( $direction == right ) {
+    border-left-color: $color;
+	} @else if ( $direction == down ) {
     border-top-color: $color;
   } @else {
     border-bottom-color: $color;
