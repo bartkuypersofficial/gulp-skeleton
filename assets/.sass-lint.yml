@@ -1,6 +1,7 @@
 
 files:
-  include: scss/**/*.scss
+  include: scss/**/*.scss,
+  ignore: 'scss/1-Settings/_settings.iconfont.scss'
 options:
   formatter: stylish
   merge-default-rules: false

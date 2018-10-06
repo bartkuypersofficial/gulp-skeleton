@@ -7,6 +7,12 @@ var gulp = require('gulp'),
     minify = require('gulp-minify'),
     rename = require('gulp-rename'),
     cssmin = require('gulp-cssmin'),
+
+    imagemin = require('gulp-imagemin'),
+    iconfont = require('gulp-iconfont'),
+    iconfontCss = require('gulp-iconfont-css'),
+    iconfontName= 'icons',
+
     sassLint = require('gulp-sass-lint');
 
 gulp.task('sass', function() {
@@ -48,6 +54,22 @@ gulp.task('minify-styles', function() {
     .pipe(rename({suffix: '.min'}))
     .pipe(gulp.dest('../css'));
 });
+
+gulp.task('iconfont', function() {
+  gulp.src(['icons/*.svg'])
+    .pipe(iconfontCss({
+      fontName: iconfontName,
+      targetPath: '../assets/scss/1-Settings/_settings.iconfont.scss',
+      fontPath: '../fonts/'
+    }))
+    .pipe(iconfont({
+      fontName: iconfontName,
+      formats: ['svg', 'ttf', 'eot', 'woff'],
+      normalize: true,
+      fontHeight: 1001
+    }))
+    .pipe(gulp.dest('../fonts'));
+});gulp.task('create-iconfont', ['iconfont', 'sass', 'sass-lint', 'minify-styles']);
 
 gulp.task('watch', ['sass', 'sass-lint', 'minify-styles', 'scripts', 'minify-scripts' ], function() {
   gulp.watch(['scss/**/*.scss'], ['sass', 'sass-lint', 'minify-styles']);
