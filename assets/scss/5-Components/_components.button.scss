@@ -1,0 +1,36 @@
+// ======================================================================================
+//  Buttons
+// ======================================================================================
+
+
+
+// ==========================================
+//  Default button styling
+// ==========================================
+
+.btn {
+  padding: $space-quarter $space;
+  transition: $transition-speed $transition-ease;
+  border: none;
+  border-radius: $space;
+  background-color: palette('primary');
+  color: palette('white');
+  line-height: normal;
+  text-decoration: none;
+
+  &:hover {
+    @include elevation(2);
+    background-color: palette('secondary');
+    color: palette('white');
+  }
+
+  &:focus,
+  &:active,
+  &:active:focus {
+    @include elevation(4);
+    outline: none;
+    outline-offset: unset;
+    background-color: palette('tertiary');
+    color: palette('white');
+  }
+}
