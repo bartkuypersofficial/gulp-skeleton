@@ -7,12 +7,10 @@ var gulp = require('gulp'),
     minify = require('gulp-minify'),
     rename = require('gulp-rename'),
     cssmin = require('gulp-cssmin'),
-
     imagemin = require('gulp-imagemin'),
     iconfont = require('gulp-iconfont'),
     iconfontCss = require('gulp-iconfont-css'),
-    iconfontName= 'icons',
-
+    iconfontName= 'Icons',
     sassLint = require('gulp-sass-lint');
 
 gulp.task('sass', function() {

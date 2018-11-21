@@ -1,15 +1,15 @@
 @font-face {
-	font-family: "icons";
-	src: url('../fonts/icons.eot');
-	src: url('../fonts/icons.eot?#iefix') format('eot'),
-		url('../fonts/icons.woff2') format('woff2'),
-		url('../fonts/icons.woff') format('woff'),
-		url('../fonts/icons.ttf') format('truetype'),
-		url('../fonts/icons.svg#icons') format('svg');
+	font-family: "Icons";
+	src: url('../fonts/Icons.eot');
+	src: url('../fonts/Icons.eot?#iefix') format('eot'),
+		url('../fonts/Icons.woff2') format('woff2'),
+		url('../fonts/Icons.woff') format('woff'),
+		url('../fonts/Icons.ttf') format('truetype'),
+		url('../fonts/Icons.svg#Icons') format('svg');
 }
 
 .icon:before {
-	font-family: "icons";
+	font-family: "Icons";
 		-webkit-font-smoothing: antialiased;
 		-moz-osx-font-smoothing: grayscale;
 	font-style: normal;
