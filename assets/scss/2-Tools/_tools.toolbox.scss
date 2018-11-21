@@ -600,11 +600,11 @@
 @mixin constrain() {
   // sass-lint:disable-block no-important
   width: 100%;
-  max-width: calc(#{map-get($breakpoints, xl)} + #{double($site-gutter-width)}) !important;
+  max-width: calc(#{map-get($breakpoints, xl)} + #{double($grid-gutter-width)}) !important;
   margin-right: auto !important;
   margin-left: auto !important;
-  padding-right: $site-gutter-width !important;
-  padding-left: $site-gutter-width !important;
+  padding-right: $grid-gutter-width !important;
+  padding-left: $grid-gutter-width !important;
 }
 
 
@@ -664,4 +664,42 @@
   box-shadow: #{map-get(_get-umbra-map($color), $z-value)},
   #{map-get(_get-penumbra-map($color), $z-value)},
   #{map-get(_get-ambient-map($color), $z-value)};
+}
+
+
+//  Reset Lobotomized Owl selector
+//  for all ancesctors in a component
+@mixin reset-owl() {
+  & * + * {
+    margin-top: 0;
+  }
+}
+
+
+//  Reset Lobotomized Owl selector
+//  for all direct children in a component
+@mixin reset-owl-children() {
+  & > * {
+    margin-top: 0;
+  }
+}
+
+
+//  Lobotomized Owl selector
+//  for a container which parent
+//  has been reset earlier
+@mixin owl($owl-margin: $space) {
+  & * + * {
+    margin-top: $owl-margin;
+  }
+}
+
+
+//  Lobotomized Owl selector
+//  for all direct children in a component when parent
+//  has been reset earlier
+@mixin owl-children($owl-margin: $space) {
+  & > * + * {
+    margin-top: $owl-margin;
+  }
 }

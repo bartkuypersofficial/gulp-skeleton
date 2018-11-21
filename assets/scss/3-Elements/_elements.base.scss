@@ -198,7 +198,7 @@ blockquote {
   color: palette('secondary');
   font-style: italic;
 
-  @include mq(m) {
+  @include mq(md) {
     margin-right: 25%;
   }
 }
