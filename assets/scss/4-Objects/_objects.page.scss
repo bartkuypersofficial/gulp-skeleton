@@ -38,10 +38,9 @@
 }
 
 .o-page__main {
-  @include constrain;
   flex: 1 0 auto; 	// [2]
   min-height: 1px;	// [3]
-  margin: $space;
+  margin: $space 0;
 }
 
 .o-page__footer {
