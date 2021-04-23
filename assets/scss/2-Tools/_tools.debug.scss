@@ -17,21 +17,21 @@
 
   //  Are there any empty elements in your page?
   :empty {
-    outline: 5px solid palette('yellow');
+    outline: 5px solid $color-warning;
   }
 
 
   //  Images require `alt` attributes, empty `alt`s are fine but should be
   //  double-checked, no `alt` is bad and is flagged red.
   img {
-    outline: 5px solid palette('red');
+    outline: 5px solid $color-alert;
 
     &[alt] {
       outline: none;
     }
 
     &[alt=''] {
-      outline: 5px solid palette('yellow');
+      outline: 5px solid $color-warning;
     }
   }
 
@@ -39,7 +39,7 @@
   //  Links sometimes, though not always, benefit from `title` attributes. Links
   //  without are never invalid but it’s a good idea to check.
   a {
-    outline: 5px solid palette('yellow');
+    outline: 5px solid $color-warning;
 
     &[title] {
       outline: none;
@@ -48,12 +48,12 @@
     //  Double-check any links whose `href` is something questionable.
     &[href='#'],
     &[href*='javascript'] {
-      outline: 5px solid palette('yellow');
+      outline: 5px solid $color-warning;
     }
 
     //  The `target` attribute ain’t too nice...
     &[target] {
-      outline: 5px solid palette('yellow');
+      outline: 5px solid $color-warning;
     }
   }
 
@@ -62,14 +62,14 @@
   ul,
   ol {
     > *:not(li) {
-      outline: 5px solid palette('red');
+      outline: 5px solid $color-alert;
     }
   }
 
 
   //  It’s always nice to give `th`s `scope` attributes.
   th {
-    outline: 5px solid palette('yellow');
+    outline: 5px solid $color-warning;
 
     &[scope] {
       outline: none;
@@ -80,19 +80,19 @@
   //  `tr`s as children of `table`s ain’t great,
   //  did you need a `thead`/`tbody`?
   table > tr {
-    outline: 5px solid palette('yellow');
+    outline: 5px solid $color-warning;
   }
 
 
   //  `tfoot` needs to come *before* `tbody`.
   tbody + tfoot {
-    outline: 5px solid palette('yellow');
+    outline: 5px solid $color-warning;
   }
 
 
   //  Forms require `action` attributes
   form {
-    outline: 5px solid palette('red');
+    outline: 5px solid $color-alert;
 
     &[action] {
       outline: none;
@@ -104,7 +104,7 @@
   //  attributes, `textarea`s need `rows` and `cols` attributes and submit buttons
   //  need a `value` attribute.
   textarea {
-    outline: 5px solid palette('red');
+    outline: 5px solid $color-alert;
 
     &[rows],
     &[cols] {
@@ -113,14 +113,14 @@
   }
 
   input {
-    outline: 5px solid palette('red');
+    outline: 5px solid $color-alert;
 
     &[type] {
       outline: none;
     }
 
     &[type=submit] {
-      outline: 5px solid palette('red');
+      outline: 5px solid $color-alert;
     }
 
     &[type=submit],
@@ -132,13 +132,13 @@
 
   //  Avoid inline styles where possible.
   [style] {
-    outline: 5px solid palette('yellow');
+    outline: 5px solid $color-warning;
   }
 
 
   //  You should avoid using IDs for CSS, is this doing any styling?
   [id] {
-    outline: 5px solid palette('yellow');
+    outline: 5px solid $color-warning;
   }
 }
 
@@ -153,20 +153,20 @@
 
   //  Append media query label on body::after
   body::after {
-    @include zindex(z-showmqlabel);
+    @include unitize(padding, 6, 8);
+    @include unitize(border-radius, 5, 5, 0, 0);
+    @include unitize(font-size, 12);
     position: fixed;
     right: 0;
     bottom: 0;
-    padding: 6px 8px;
-    border-radius: 5px 5px 0 0;
-    background: palette('black');
-    color: palette('white');
+    background: $black;
+    color: $white;
     font-family: monospace;
-    font-size: 12px;
     line-height: 1;
     text-align: center;
     content: 'screen size not supported';
     opacity: .75;
+    z-index: $z-showmqlabel;
   }
 
 

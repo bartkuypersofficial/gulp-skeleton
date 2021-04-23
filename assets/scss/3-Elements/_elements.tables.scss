@@ -18,16 +18,16 @@ table {
 
   td,
   th {
+    @include unitize(padding, 12);
     @include border(bottom);
-    padding: $space-half;
     text-align: left;
   }
 
   th {
-    background-color: palette('neutral', 'light');
+    background-color: $brand-neutral-100;
   }
 
   td:first-child {
-    color: palette('neutral');
+    color: $brand-neutral;
   }
 }

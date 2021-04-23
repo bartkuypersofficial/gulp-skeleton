@@ -9,19 +9,19 @@
 // ==========================================
 
 .c-btn {
-  padding: $space-quarter $space;
+  @include unitize(padding, 6, 24);
+  @include rounded();
   transition: $transition-speed $transition-ease;
   border: none;
-  border-radius: $space;
-  background-color: palette('primary');
-  color: palette('white');
+  background-color: $brand-primary;
+  color: $white;
   line-height: normal;
   text-decoration: none;
 
   &:hover {
     @include elevation(2);
-    background-color: palette('secondary');
-    color: palette('white');
+    background-color: $brand-primary-dark;
+    color: $white;
   }
 
   &:focus,
@@ -30,7 +30,7 @@
     @include elevation(4);
     outline: none;
     outline-offset: unset;
-    background-color: palette('tertiary');
-    color: palette('white');
+    background-color: $brand-primary-darker;
+    color: $white;
   }
 }

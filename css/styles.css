@@ -1,19 +1,19 @@
 @charset "UTF-8";
 body::after {
-  z-index: 70;
+  padding: 0.375rem 0.5rem;
+  border-radius: 0.3125rem 0.3125rem 0rem 0rem;
+  font-size: 0.75rem;
   position: fixed;
   right: 0;
   bottom: 0;
-  padding: 6px 8px;
-  border-radius: 5px 5px 0 0;
-  background: black;
-  color: white;
+  background: #000000;
+  color: #ffffff;
   font-family: monospace;
-  font-size: 12px;
   line-height: 1;
   text-align: center;
   content: 'screen size not supported';
   opacity: .75;
+  z-index: 70;
 }
 
 @media only screen and (min-width: 0) {
@@ -250,8 +250,7 @@ body {
 }
 
 html {
-  font-size: 15px;
-  font-size: 0.9375rem;
+  font-size: 1rem;
   height: 100%;
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
@@ -269,12 +268,11 @@ body {
   font-family: "Open Sans", sans-serif;
   font-weight: normal;
   font-style: normal;
-  font-size: 15px;
-  font-size: 0.9375rem;
+  font-size: 1rem;
   min-height: 100%;
   margin: 0;
   padding: 0;
-  background: #efefef;
+  background: #dadae5;
   color: #000000;
   overflow-x: hidden;
 }
@@ -286,7 +284,7 @@ a {
 }
 
 a:not([class]):hover {
-  color: #44697d;
+  color: #0000c0;
 }
 
 a:focus, a:active {
@@ -296,7 +294,7 @@ a:focus, a:active {
 
 hr {
   border: none;
-  border-top: 1px solid #5e6a71;
+  border-top: 1px solid #090909;
 }
 
 blockquote,
@@ -321,7 +319,7 @@ hr {
 p,
 ul,
 ol {
-  margin-top: 12px;
+  margin-top: 0.75rem;
 }
 
 fieldset,
@@ -336,14 +334,14 @@ fieldset {
 }
 
 ::-moz-selection {
-  background: #392533;
-  color: #efefef;
+  background: #1c1c1c;
+  color: #dadae5;
   text-shadow: none;
 }
 
 ::selection {
-  background: #392533;
-  color: #efefef;
+  background: #1c1c1c;
+  color: #dadae5;
   text-shadow: none;
 }
 
@@ -366,7 +364,6 @@ ul {
 }
 
 ul li::before {
-  font-size: 20px;
   font-size: 1.25rem;
   display: inline-block;
   width: 1em;
@@ -387,23 +384,22 @@ ol li {
 }
 
 ol li::before {
+  min-width: 1.875rem;
+  padding-right: 0.75rem;
   display: inline-block;
-  min-width: 30px;
   margin-left: -1.125em;
-  padding-right: 12px;
   content: counter(li);
 }
 
 blockquote {
-  font-size: 18px;
-  font-size: 1.125rem;
+  margin: 1.5rem 3rem 1.5rem 1.5rem;
+  padding: 0rem 1.5rem;
   font-family: "Open Sans", sans-serif;
   font-weight: 600;
   font-style: normal;
-  margin: 24px 48px 24px 24px;
-  padding: 0 24px;
-  border-left: 2px solid #739abc;
-  color: #ff6e00;
+  font-size: 1.125rem;
+  border-left: 2px solid #0000c0;
+  color: #000099;
   font-style: italic;
 }
 
@@ -414,8 +410,7 @@ blockquote {
 }
 
 .lead {
-  font-size: 15px;
-  font-size: 0.9375rem;
+  font-size: 1rem;
   font-family: "Open Sans", sans-serif;
   font-weight: 600;
   font-style: normal;
@@ -428,60 +423,34 @@ h3,
 h4,
 h5,
 h6 {
-  margin-top: 24px;
-}
-
-h1,
-h2 {
-  color: #ff6e00;
-}
-
-h3,
-h4,
-h5,
-h6 {
+  margin-top: 1.5rem;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 300;
+  font-style: normal;
   color: #000099;
 }
 
 h1 {
-  font-family: "Open Sans", sans-serif;
-  font-weight: 300;
-  font-style: normal;
-  font-size: 36px;
-  font-size: 2.25rem;
+  font-size: 2rem;
 }
 
 h2 {
-  font-size: 28px;
   font-size: 1.75rem;
 }
 
 h3 {
-  font-family: "Open Sans", sans-serif;
-  font-weight: 600;
-  font-style: normal;
-  font-size: 20px;
-  font-size: 1.25rem;
+  font-size: 1.5rem;
 }
 
 h4 {
-  font-family: "Open Sans", sans-serif;
-  font-weight: 300;
-  font-style: normal;
-  font-size: 18px;
-  font-size: 1.125rem;
+  font-size: 1.25rem;
 }
 
 h5 {
-  font-family: "Open Sans", sans-serif;
-  font-weight: 600;
-  font-style: normal;
-  font-style: italic;
+  font-size: 1.125rem;
 }
 
-h5,
 h6 {
-  font-size: 16px;
   font-size: 1rem;
 }
 
@@ -509,31 +478,9 @@ li > ol {
   margin-bottom: 0;
 }
 
-* + *,
-* + h1,
-* + h2,
-* + h3,
-* + h4,
-* + h5,
-* + h6,
-* + p,
-* + ul,
-* + ol,
-* + dl,
-* + hr,
-* + figure,
-* + blockquote,
-* + .lead {
-  margin-top: 24px;
-}
-
-* + div:empty {
-  margin-top: 0;
-}
-
 table {
   border-radius: 5px;
-  border: 1px solid #5e6a71;
+  border: 1px solid #090909;
   border-collapse: separate;
   border-spacing: 0;
   overflow: hidden;
@@ -545,17 +492,17 @@ table tr:last-child > * {
 
 table td,
 table th {
-  border-bottom: 1px solid #5e6a71;
-  padding: 12px;
+  padding: 0.75rem;
+  border-bottom: 1px solid #090909;
   text-align: left;
 }
 
 table th {
-  background-color: #949d9e;
+  background-color: #dadae5;
 }
 
 table td:first-child {
-  color: #5e6a71;
+  color: #090909;
 }
 
 .container {
@@ -1380,22 +1327,14 @@ table td:first-child {
   margin-top: 0;
 }
 
-.o-page > * {
-  margin-top: 0;
-}
-
 .o-page__header {
   flex-shrink: 0;
 }
 
-.o-page__header > * {
-  margin-top: 0;
-}
-
 .o-page__main {
+  min-height: 0.0625rem;
+  margin: 0.75rem 0rem;
   flex: 1 0 auto;
-  min-height: 1px;
-  margin: 24px 0;
 }
 
 .o-page__footer {
@@ -1403,26 +1342,47 @@ table td:first-child {
 }
 
 .c-btn {
-  padding: 6px 24px;
+  padding: 0.375rem 1.5rem;
+  border-radius: 5px;
   transition: 0.4s ease-in-out;
   border: none;
-  border-radius: 24px;
   background-color: #000099;
-  color: white;
+  color: #ffffff;
   line-height: normal;
   text-decoration: none;
 }
 
 .c-btn:hover {
-  box-shadow: 0px 3px 1px -2px rgba(57, 37, 51, 0.2), 0px 2px 2px 0px rgba(57, 37, 51, 0.14), 0px 1px 5px 0px rgba(57, 37, 51, 0.12);
-  background-color: #ff6e00;
-  color: white;
+  box-shadow: 0px 3px 1px -2px rgba(28, 28, 28, 0.2), 0px 2px 2px 0px rgba(28, 28, 28, 0.14), 0px 1px 5px 0px rgba(28, 28, 28, 0.12);
+  background-color: #00007a;
+  color: #ffffff;
 }
 
 .c-btn:focus, .c-btn:active, .c-btn:active:focus {
-  box-shadow: 0px 2px 4px -1px rgba(57, 37, 51, 0.2), 0px 4px 5px 0px rgba(57, 37, 51, 0.14), 0px 1px 10px 0px rgba(57, 37, 51, 0.12);
+  box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.2), 0px 4px 5px 0px rgba(28, 28, 28, 0.14), 0px 1px 10px 0px rgba(28, 28, 28, 0.12);
   outline: none;
   outline-offset: unset;
-  background-color: #72ce9b;
-  color: white;
+  background-color: #000058;
+  color: #ffffff;
+}
+
+@font-face {
+  font-family: "Open Sans";
+  font-style: normal;
+  font-weight: normal;
+  src: url("../fonts/OpenSans-Regular.eot?#iefix") format("embedded-opentype"), url("../fonts/OpenSans-Regular.woff") format("woff"), url("../fonts/OpenSans-Regular.ttf") format("truetype"), url("../fonts/OpenSans-Regular.svg#Open Sans") format("svg");
+}
+
+@font-face {
+  font-family: "Open Sans";
+  font-style: normal;
+  font-weight: 600;
+  src: url("../fonts/OpenSans-SemiBold.eot?#iefix") format("embedded-opentype"), url("../fonts/OpenSans-SemiBold.woff") format("woff"), url("../fonts/OpenSans-SemiBold.ttf") format("truetype"), url("../fonts/OpenSans-SemiBold.svg#Open Sans") format("svg");
+}
+
+@font-face {
+  font-family: "Open Sans";
+  font-style: normal;
+  font-weight: 300;
+  src: url("../fonts/OpenSans-Light.eot?#iefix") format("embedded-opentype"), url("../fonts/OpenSans-Light.woff") format("woff"), url("../fonts/OpenSans-Light.ttf") format("truetype"), url("../fonts/OpenSans-Light.svg#Open Sans") format("svg");
 }

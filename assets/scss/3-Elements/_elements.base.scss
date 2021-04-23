@@ -39,7 +39,7 @@
 // ==========================================
 
 html {
-  @include font-size('base'); // [1] //
+  @include unitize(font-size, 16); // [1] //
   height: 100%; // [2] //
   -webkit-text-size-adjust: 100%; // [3] //
   -ms-text-size-adjust: 100%; // [3] //
@@ -59,7 +59,7 @@ html {
 
 body {
   @include font('opensans');
-  @include font-size('base');
+  @include unitize(font-size, 16);
   min-height: 100%;
   margin: 0;
   padding: 0;
@@ -112,7 +112,7 @@ hr {
 p,
 ul,
 ol {
-  margin-top: $space-half;
+  @include unitize(margin-top, 12);
 }
 
 fieldset,
@@ -132,8 +132,8 @@ fieldset {
 // ==========================================
 
 ::selection {
-  background: palette('neutral', 'dark');
-  color: palette('neutral', 'x-light');
+  background: $brand-neutral-600;
+  color: $brand-neutral-100;
   text-shadow: none;
 }
 
@@ -161,11 +161,11 @@ ul {
   list-style: none;
 
   li::before {
-    @include font-size('x-large');
+    @include unitize(font-size, 20);
     display: inline-block;
     width: 1em;
     margin-left: -.875em;
-    color: palette('secondary');
+    color: $brand-secondary;
     line-height: 0;
     content: '•';
     vertical-align: middle;
@@ -180,22 +180,22 @@ ol {
     counter-increment: li;
 
     &::before {
+      @include unitize(min-width, 30);
+      @include unitize(padding-right, 12);
       display: inline-block;
-      min-width: $space + $space-quarter;
       margin-left: -1.125em;
-      padding-right: $space-half;
       content: counter(li);
     }
   }
 }
 
 blockquote {
-  @include font-size('large');
+  @include unitize(margin, 24, 48, 24, 24);
+  @include unitize(padding, 0, 24);
   @include font('opensans', 'semi-bold');
-  margin: $space $space-double $space $space;
-  padding: 0 $space;
-  border-left: 2px solid palette('primary', 'x-light');
-  color: palette('secondary');
+  @include unitize(font-size, 18);
+  border-left: 2px solid $brand-primary-light;
+  color: $brand-primary;
   font-style: italic;
 
   @include mq(md) {
@@ -204,7 +204,7 @@ blockquote {
 }
 
 .lead {
-  @include font-size('base');
+  @include unitize(font-size, 16);
   @include font('opensans', 'semi-bold');
   font-style: italic;
 }

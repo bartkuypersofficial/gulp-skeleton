@@ -10,46 +10,31 @@ h3,
 h4,
 h5,
 h6 {
-  margin-top: $space;
-}
-
-h1,
-h2 {
-  color: palette('secondary');
-}
-
-h3,
-h4,
-h5,
-h6 {
-  color: palette('primary');
+  @include unitize(margin-top, 24);
+  @include font('opensans', 'light');
+  color: $brand-primary;
 }
 
 h1 {
-  @include font('opensans', 'light');
-  @include font-size('x3-large');
+  @include unitize(font-size, 32);
 }
 
 h2 {
-  @include font-size('x2-large');
+  @include unitize(font-size, 28);
 }
 
 h3 {
-  @include font('opensans', 'semi-bold');
-  @include font-size('x-large');
+  @include unitize(font-size, 24);
 }
 
 h4 {
-  @include font('opensans', 'light');
-  @include font-size('large');
+  @include unitize(font-size, 20);
 }
 
 h5 {
-  @include font('opensans', 'semi-bold');
-  font-style: italic;
+  @include unitize(font-size, 18);
 }
 
-h5,
 h6 {
-  @include font-size('medium');
+  @include unitize(font-size, 16);
 }
